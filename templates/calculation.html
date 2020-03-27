@@ -1,27 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap-theme.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>calculate</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-<div>
-    <table>
-        <tr>
-            <th>序号</th>
-            <th>1</th>
-        </tr>
-        <tr>
-            <th>f(x)</th>
-            <th><input type="text" class="table-input"></th>
-        </tr>
-        <tr>
-            <th>x</th>
-            <th><input type="text" class="table-input"></th>
-        </tr>
-    </table>
-</div>
-<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<form action="/index" method="post" id="fff">
+    <p><label>牛顿插值
+        <input type="checkbox" name="lineType" value="newton">
+    </label></p>
+    <p><label>拉格朗日插值
+        <input type="checkbox" name="lineType" value="laGrange">
+    </label></p>
+    <p><label for="hermite">Hermite插值</label><input type="checkbox" name="lineType" value="hermite" id="hermite"></p>
+    <p id="p-fx"><label for="fx">函数值:</label>
+        <input type="text" name="fxi" placeholder="值与值之间用,隔开" id="fx"></p>
+    <p><label for="x">自变量:</label>
+        <input type="text" name="xi" placeholder="值与值之间用,隔开" id="x"></p>
+<!--    <p><label for="predict">预测点:</label>-->
+<!--        <input type="text" name="predict" id="predict" placeholder="想要预测的点的x值"></p>-->
+    <button id="btn">生成</button>
+</form>
+
+<script>
+    var flag = false;
+    $("#hermite").on("click", function () {
+        console.log("123");
+        let obj = document.getElementById("hermite").checked;
+        if (obj === true) {
+            $("#p-fx").after("<div id='fffx'><p><label for=\"x\">导函数值:</label>\n" +
+                "    <input type=\"text\" name=\"ffx\" placeholder=\"值与值之间用,隔开\" id=\"ffx\"></p></div>");
+            flag = true;
+        } else {
+            $("#fffx").remove();
+            flag = false;
+        }
+    });
+    $("#btn").on("click", function () {
+        let fx = $("#fx").val().split(",");
+        let x = $("#x").val().split(",");
+        // let prediction = $("predict").val();
+        // prediction = parseFloat(prediction);
+        let fxx = undefined;
+        if (flag) {
+            fxx = $("#ffx").val();
+        }
+        let lineType = [];
+        $('input[name="lineType"]:checked').each(function () {
+            lineType.push($(this).val());
+        });
+        if (fx === undefined || x === undefined) {
+            alert("请输入正确数量的数据");
+        }
+        if (fx.length !== x.length || lineType.length === 0) {
+            alert("请输入正确数量的数据或使用英文感叹号!或者请勾选想要使用的算法!");
+            return false;
+        } else {
+            console.log(fx);
+            console.log(x);
+            console.log(fxx);
+            console.log(lineType);
+            return true;
+        }
+        // return false;
+    });
+</script>
 </body>
 </html>

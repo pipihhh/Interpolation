@@ -31,7 +31,8 @@ $(document).ready(function () {
             },
             legend: {
                 display: legendState
-            }
+            },
+            bezierCurve : true
         },
         data: {
             labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"],
@@ -57,7 +58,8 @@ $(document).ready(function () {
                     pointRadius: 1,
                     pointHitRadius: 0,
                     data: [50, 20, 60, 31, 52, 22, 40, 25, 30, 68, 56, 40, 60, 43, 55, 39, 47],
-                    spanGaps: false
+                    spanGaps: false,
+                    bezierCurve : true
                 },
                 {
                     label: "Page Views",
@@ -92,61 +94,61 @@ $(document).ready(function () {
     // Line Chart 1
     // ------------------------------------------------------ //
     var LINECHART1 = $('#lineChart1');
-    var myLineChart = new Chart(LINECHART1, {
-        type: 'line',
-        options: {
-            scales: {
-                xAxes: [{
-                    display: true,
-                    gridLines: {
-                        display: false
-                    }
-                }],
-                yAxes: [{
-                    ticks: {
-                        max: 40,
-                        min: 0,
-                        stepSize: 0.5
-                    },
-                    display: false,
-                    gridLines: {
-                        display: false
-                    }
-                }]
-            },
-            legend: {
-                display: false
-            }
-        },
-        data: {
-            labels: ["A", "B", "C", "D", "E", "F", "G"],
-            datasets: [
-                {
-                    label: "Total Overdue",
-                    fill: true,
-                    lineTension: 0,
-                    backgroundColor: "transparent",
-                    borderColor: '#6ccef0',
-                    pointBorderColor: '#59c2e6',
-                    pointHoverBackgroundColor: '#59c2e6',
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    borderWidth: 3,
-                    pointBackgroundColor: "#59c2e6",
-                    pointBorderWidth: 0,
-                    pointHoverRadius: 4,
-                    pointHoverBorderColor: "#fff",
-                    pointHoverBorderWidth: 0,
-                    pointRadius: 4,
-                    pointHitRadius: 0,
-                    data: [20, 28, 30, 22, 24, 10, 7],
-                    spanGaps: false
-                }
-            ]
-        }
-    });
+    // var myLineChart = new Chart(LINECHART1, {
+    //     type: 'line',
+    //     options: {
+    //         scales: {
+    //             xAxes: [{
+    //                 display: true,
+    //                 gridLines: {
+    //                     display: false
+    //                 }
+    //             }],
+    //             yAxes: [{
+    //                 ticks: {
+    //                     max: 40,
+    //                     min: 0,
+    //                     stepSize: 0.5
+    //                 },
+    //                 display: false,
+    //                 gridLines: {
+    //                     display: false
+    //                 }
+    //             }]
+    //         },
+    //         legend: {
+    //             display: false
+    //         }
+    //     },
+    //     data: {
+    //         labels: ["A", "B", "C", "D", "E", "F", "G"],
+    //         datasets: [
+    //             {
+    //                 label: "Total Overdue",
+    //                 fill: true,
+    //                 lineTension: 0,
+    //                 backgroundColor: "transparent",
+    //                 borderColor: '#6ccef0',
+    //                 pointBorderColor: '#59c2e6',
+    //                 pointHoverBackgroundColor: '#59c2e6',
+    //                 borderCapStyle: 'butt',
+    //                 borderDash: [],
+    //                 borderDashOffset: 0.0,
+    //                 borderJoinStyle: 'miter',
+    //                 borderWidth: 3,
+    //                 pointBackgroundColor: "#59c2e6",
+    //                 pointBorderWidth: 0,
+    //                 pointHoverRadius: 4,
+    //                 pointHoverBorderColor: "#fff",
+    //                 pointHoverBorderWidth: 0,
+    //                 pointRadius: 4,
+    //                 pointHitRadius: 0,
+    //                 data: [20, 28, 30, 22, 24, 10, 7],
+    //                 spanGaps: false
+    //             }
+    //         ]
+    //     }
+    // });
 
 
 

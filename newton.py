@@ -59,7 +59,7 @@ def get_quotient(xi, fi):
                         xi[index + 1] - xi[index - difference])
             temp = last
         temp = None
-    print(parameter_arr)
+    # print(parameter_arr)
     return parameter_arr
 
 
@@ -70,6 +70,15 @@ def function(data):
 
 
 def function2(data, param, xi, fi, j=None):
+    """
+
+    :param data: 想要计算的数值
+    :param param: 根据算法计算出来的差商数组 用来形成公式
+    :param xi: 传的xi列表 用来形成公式
+    :param fi: 传的fi列表 用来形成公式
+    :param j: 想要的阶数 默认为数组的长度
+    :return:
+    """
     j = j or len(param) - 1
     count = fi[0]
     while j >= 0:
@@ -93,7 +102,7 @@ def calculate_data(x, parameters):
     returnData = []
     for data in x:
         returnData.append(function(data))
-    print(returnData)
+    # print(returnData)
     return returnData
 
 
@@ -102,7 +111,7 @@ def calculate_data2(param, xi, fi, j=None):
     for data in xi:
         # return_data.append(function2(Decimal(str(data)), param, xi, fi))
         return_data.append(function2(data, param, xi, fi, j))
-    print(return_data)
+    # print(return_data)
     return return_data
 
 
@@ -111,22 +120,20 @@ newData为曲线拟合后的曲线
 """
 
 
-def draw(newData):
-    plt.scatter(x, y, label="离散数据", color="red")
-    plt.plot(x, newData, label="牛顿插值拟合曲线", color="black")
-    plt.scatter(0.596, function(0.596), label="预测函数点", color="blue")
-    plt.title("牛顿插值法")
-    mpl.rcParams['font.sans-serif'] = ['SimHei']
-    mpl.rcParams['axes.unicode_minus'] = False
+def draw(newData, x, y, ret):
+    plt.scatter(x, y, label="Newton Point", color="red")
+    plt.plot(x, newData, label="Newton", color="black")
+    # plt.scatter(prediction, function2(prediction, ret, x, y), label="Newton PP", color="blue")
     plt.legend(loc="upper left")
     # plt.savefig(f"C:\\Users\\qq312\\Desktop\\{random.randint(1, 10)}.png")
     # plt.imshow((10, 10, 4))
-    plt.show()
+    # plt.show()
 
 
-parameters = five_order_difference_quotient(x, y)
-print(parameters)
-ret = get_quotient(x, y)
-yz = calculate_data2(ret, x, y)
-yuanzu = calculate_data(x, parameters)
-draw(yz)
+if __name__ == '__main__':
+    parameters = five_order_difference_quotient(x, y)
+    print(parameters)
+    ret = get_quotient(x, y)
+    yz = calculate_data2(ret, x, y)
+    yuanzu = calculate_data(x, parameters)
+    draw(yz)
