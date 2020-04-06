@@ -26,7 +26,7 @@ class Newton(object):
             raise ValueError("数据长度不一致!")
 
     def __str__(self):
-        s = ""
+        s = "Newton:"
         for a in self._fxi:
             s += str(a)
         for b in self._xi:
@@ -53,7 +53,7 @@ class Lagrange(object):
         plt.legend(loc="upper left")
 
     def __str__(self):
-        s = ""
+        s = "Lagrange:"
         for a in self._fxi:
             s += str(a)
         for b in self._xi:
@@ -80,7 +80,7 @@ class Hermite(object):
         plt.legend(loc="upper left")
 
     def __str__(self):
-        s = ""
+        s = "Hermite:"
         for a in self._fxi:
             s += str(a)
         for b in self._xi:
